@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import data from "./products.json"
-import {ProductsTable} from './components/productsTable'
+import {ProductsTable} from './components/ProductsTable'
 
 
 
