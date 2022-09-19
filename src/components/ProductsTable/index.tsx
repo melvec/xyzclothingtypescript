@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import data from "../../data/products.json";
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 import { Currency } from "../Currency";
 import {
@@ -14,11 +15,18 @@ import {
   Button,
 } from "@mui/material";
 
+interface Product {
+  name: string;
+  id: number;
+  
+}
+
 export const ProductsTable = () => {
   const [products, setProducts] = useState(data);
-  const navigate = useNavigate();
-  const viewDetails = useCallback(() => navigate('/productdetails', {replace: true}), [navigate]);
+  // const navigate = useNavigate();
+  // const viewDetails = useCallback(() => navigate('/productdetails', {replace: true}), [navigate]);
 
+  
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -43,7 +51,7 @@ export const ProductsTable = () => {
                 {product.price.amount} {product.price.base}
               </TableCell>
               <TableCell>
-                <Button onClick={viewDetails} variant="contained">Edit</Button>
+                <Button component={Link} to={`/productdetails/${product.id}`}  variant="contained">View More</Button>
               </TableCell>
             </TableRow>
           ))}
